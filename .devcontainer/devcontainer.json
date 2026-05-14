@@ -1,0 +1,35 @@
+{
+  "name": "Dragonscale Network - No-Sandbox Collective",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "enableNonRootDocker": "true",
+      "moby": "true"
+    },
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "ms-python.python",
+        "GitHub.copilot"
+      ]
+    }
+  },
+  "postCreateCommand": "sudo chmod 666 /var/run/docker.sock || true && pip install -r requirements.txt || true",
+  "remoteUser": "vscode",
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+  "runArgs": [
+    "--privileged",
+    "--cap-add=SYS_ADMIN",
+    "--security-opt=seccomp=unconfined"
+  ],
+  "containerEnv": {
+    "DRAGONSCALE_NO_SANDBOX": "true",
+    "DRAGONSCALE_LEDGER": "/workspace/ledger"
+  }
+}

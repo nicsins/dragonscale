@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  tckg:
+    build: ./tckg
+    container_name: dragonscale-tckg
+    volumes:
+      - tckg_data:/app/data
+      - ./ledger:/app/ledger
+    ports:
+      - "8001:8000"
+    environment:
+      - DRAGONSCALE_MODE=collective
+    restart: unless-stopped
+
+  agents:
+    build: ./agents
+    container_name: dragonscale-agents
+    depends_on:
+      - tckg
+    volumes:
+      - ./agents:/app
+      - user_profiles:/app/profiles:ro  # Encrypted partitions
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - TCKG_HOST=http://tckg:8000
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: dragonscale-ollama
+    volumes:
+      - ollama_models:/root/.ollama
+    ports:
+      - "11434:11434"
+    restart: unless-stopped
+
+  ui:
+    build: ./ui
+    container_name: dragonscale-ui
+    ports:
+      - "8000:8000"
+    depends_on:
+      - agents
+      - tckg
+    environment:
+      - BACKEND_URL=http://agents:8000
+    restart: unless-stopped
+
+  headscale:
+    image: headscale/headscale:latest
+    container_name: dragonscale-headscale
+    volumes:
+      - headscale_data:/var/lib/headscale
+    ports:
+      - "8080:8080"
+    command: headscale serve
+    restart: unless-stopped
+
+volumes:
+  tckg_data:
+  ollama_models:
+  user_profiles:
+  headscale_data:

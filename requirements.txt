@@ -1,0 +1,6 @@
+networkx
+fastapi
+uvicorn
+python-dotenv
+cryptography
+pydantic
