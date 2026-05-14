@@ -1,6 +1,13 @@
-networkx
-fastapi
-uvicorn
-python-dotenv
-cryptography
-pydantic
+# Dragonscale Core Dependencies
+psycopg2-binary>=2.9.9
+networkx>=3.3
+numpy>=1.26
+requests>=2.31
+cryptography>=42.0  # for encrypted profiles
+python-dotenv>=1.0
+pydantic>=2.7
+fastapi>=0.111  # for future UI/dashboard
+uvicorn>=0.30
+# Optional for full temporal graph
+# neo4j>=5.20
+# pgvector  # Postgres extension

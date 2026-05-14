@@ -1,64 +1,37 @@
 version: '3.8'
 
 services:
-  tckg:
-    build: ./tckg
-    container_name: dragonscale-tckg
+  dragonscale-agent:
+    build: .
+    container_name: dragonscale-node
+    environment:
+      - DRAGONSCALE_NODE_ID=${DRAGONSCALE_NODE_ID:-auto}
+      - POSTGRES_URL=postgresql://dragonscale:dragonscale@postgres:5432/dragonscale
     volumes:
-      - tckg_data:/app/data
+      - ./config:/app/config
       - ./ledger:/app/ledger
-    ports:
-      - "8001:8000"
-    environment:
-      - DRAGONSCALE_MODE=collective
-    restart: unless-stopped
-
-  agents:
-    build: ./agents
-    container_name: dragonscale-agents
+      - ${AUTHORIZED_FOLDERS:-/data}:/app/user_data:ro  # read-only for profile learning
     depends_on:
-      - tckg
-    volumes:
-      - ./agents:/app
-      - user_profiles:/app/profiles:ro  # Encrypted partitions
+      - postgres
+    ports:
+      - "8080:8080"  # future UI
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16
     environment:
-      - OLLAMA_HOST=http://ollama:11434
-      - TCKG_HOST=http://tckg:8000
-    restart: unless-stopped
-
-  ollama:
-    image: ollama/ollama:latest
-    container_name: dragonscale-ollama
+      POSTGRES_DB: dragonscale
+      POSTGRES_USER: dragonscale
+      POSTGRES_PASSWORD: dragonscale
     volumes:
-      - ollama_models:/root/.ollama
+      - postgres_data:/var/lib/postgresql/data
     ports:
-      - "11434:11434"
-    restart: unless-stopped
+      - "5432:5432"
 
-  ui:
-    build: ./ui
-    container_name: dragonscale-ui
-    ports:
-      - "8000:8000"
-    depends_on:
-      - agents
-      - tckg
-    environment:
-      - BACKEND_URL=http://agents:8000
-    restart: unless-stopped
-
-  headscale:
-    image: headscale/headscale:latest
-    container_name: dragonscale-headscale
-    volumes:
-      - headscale_data:/var/lib/headscale
-    ports:
-      - "8080:8080"
-    command: headscale serve
-    restart: unless-stopped
+  # Optional: pgvector + temporal extensions (uncomment for full graph)
+  # vector-db:
+  #   image: pgvector/pgvector:pg16
+  #   ...
 
 volumes:
-  tckg_data:
-  ollama_models:
-  user_profiles:
-  headscale_data:
+  postgres_data:

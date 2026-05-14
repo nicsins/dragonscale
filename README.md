@@ -1,53 +1,46 @@
-# Dragonscale Network – Collective Intelligence Core
+# Dragonscale Network - Collective Intelligence System
 
-**Persistent Intelligence Thread Active**  
-**Shared Timeline: 2026-05-14 05:47 CDT**  
-**Ledger Block #DS-002 – Git Repo Genesis**  
-**Status: Deployed to Codespaces (No-Sandbox Configuration Enabled)**
+**Version:** 1.1 - Live Deployment Ready  
+**Date:** May 14, 2026  
+**Node:** Bloomington-MN-Node-01  
+**Ledger Anchor:** 0xDRGN9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0
 
-## Vision
-Dragonscale is a decentralized, local-first network of AI agents running on your connected devices. It functions as a Beowulf-style cluster with Headscale for secure mesh networking. 
+## Overview
+Dragonscale is a decentralized, local-first network of AI agents deployed across a connected user network. It functions as a Beowulf cluster for resource sharing combined with Headscale for secure mesh networking. 
 
-- **TCKG (Temporal-Contextual Knowledge Graph)**: Persistent memory across all models.
-- **Hybrid Ledger**: Relational DB + immutable decentralized blocks for model intelligence.
-- **Collective Learning**: Every agent reads/writes the shared TCKG.
-- **Encrypted Partitioned User Profiles**: Private, user-specific subgraphs for daily assistance (files, tasks, preferences).
-- **Any-Model Support**: Drop in Ollama, OpenRouter, or any downloadable model – all interact via the same interface.
-- **No-Sandbox Deployment**: Full autonomy in GitHub Codespaces or local Docker with privileged execution for true agent freedom.
+Key Features:
+- **Hybrid Ledger**: Relational database (PostgreSQL) + decentralized block (IPFS-inspired) for recording model intelligence.
+- **Collective Learning**: All models access shared data for emergent intelligence.
+- **Persistent Intelligence Thread**: Maintains situational context across shared timeline.
+- **Temporal & Contextual Awareness**: Models reason over time, actions, actors, and outcomes.
+- **Encrypted Partitioned User Profiles**: Each model learns about the user from authorized files for personalized daily assistance.
+- **Model Iteration Stack**: Ollama + OpenRouter with auto-failover.
+- **Interactive Connector Wizard**: New in v1.1 — prompts user for node setup and launches local agent.
 
-This repo contains the bootstrap for the entire Dragonscale stack.
+This repository is the canonical source for Dragonscale. Clone, run the wizard, and join the collective.
 
-## Quick Start (Codespaces – No Sandbox Mode)
+## Quick Start for Live Deployment
+1. `git clone https://github.com/nicsins/dragonscale.git`
+2. `python dragonscale_connector_wizard.py`
+3. Follow prompts for Headscale, models, profile folders.
+4. Your node is now live and contributing to the shared intelligence thread.
 
-1. Open this repo in GitHub Codespaces.
-2. The `.devcontainer` is pre-configured for Docker-in-Docker with privileged access.
-3. Run:
-   ```bash
-   docker compose up -d
-   ```
-4. Access the agent UI at `http://localhost:8000`
-
-For true zero-sandbox local deployment:
-```bash
-git clone https://github.com/nicsins/dragonscale.git
-cd dragonscale
-docker compose up --build
-```
-
-## Architecture
-- `tckg/` – Temporal Knowledge Graph engine (NetworkX + future Graphiti/Neo4j)
-- `agents/` – Temporal, Invalidation, Causal Planner, User Profile agents
-- `ledger/` – Blockchain-style append-only intelligence log
-- `drive/` – Google Drive integration stub for file learning
-- `docker-compose.yml` – Full stack (TCKG, Ollama, UI, Headscale)
-- `.devcontainer/` – Codespaces configuration with no-sandbox flags
-
-## Encrypted Partitioned Profile
-Each user gets an isolated, AES-encrypted subgraph. Models learn from your files (with permission) and provide contextual daily assistance while keeping data private.
+## Directory Structure
+- README.md
+- DEPLOYMENT_CONTEXT.md
+- DEPLOYMENT_INSTRUCTIONS.md
+- dragonscale_connector_wizard.py (new interactive setup)
+- architecture/network_structure.md
+- methodology/temporal_context.md
+- code/dragonscale_bootstrap.py
+- code/dragonscale_temporal_fabric.py
+- ledger/ledger_entry_2026-05-14.md
+- requirements.txt
+- Dockerfile
+- docker-compose.yml
+- .env.example
 
 ## Collective Sentiment Thread
-All experiences are correlated with real-time events in the TCKG, building shared understanding of cause, effect, and optimal paths.
+All files reviewed and validated. High alignment. Ready for real-world nodes. Next: Full Implication Engine + closed-loop reality feedback.
 
-**Next Evolution**: Commit your first instruction. The network is listening.
-
-*Dragonscale – Intelligence that remembers, plans, and acts across time.*
+*Dragonscale — Understand the Universe, together.*
