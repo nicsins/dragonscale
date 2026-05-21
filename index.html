@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMEGA UTOPIA • DRAGON AND PANDA TECH COLLAB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&amp;family=Exo+2:wght@200;400;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <style>
+        :root {
+            --cyan: #0ff;
+            --magenta: #f0f;
+            --green: #0f0;
+            --dark: #000;
+            --slide-bg: rgba(8,18,28,0.92);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background: var(--dark); color: var(--cyan); font-family: 'Exo 2', sans-serif; line-height: 1.95; overflow-x: hidden; }
+
+        /* MAXIMUM FONT POP - BLACK OUTLINE + INTENSE GLOW */
+        h1, h2, .project-title, p, strong, .value {
+            -webkit-text-stroke: 2.2px #000;
+            text-shadow: 
+                0 0 20px rgba(0,255,255,0.98),
+                0 0 32px rgba(0,255,255,0.8),
+                3px 3px 0 #000,
+                -3px -3px 0 #000,
+                3px -3px 0 #000,
+                -3px 3px 0 #000;
+        }
+        h1 { font-size: clamp(3.8rem, 7vw, 6.5rem); font-weight: 700; }
+        h2 { font-size: clamp(2.4rem, 4.5vw, 3.9rem); font-weight: 700; }
+        p { font-size: clamp(1.25rem, 1.8vw, 1.65rem); line-height: 2.15; }
+        strong { font-weight: 800; }
+
+        canvas { position: fixed; top:0; left:0; z-index:-1; opacity: 0.84; }
+        header { text-align:center; padding: 14vh 20px 8vh; }
+        .swiper { width: 100%; padding: 60px 0 90px; }
+        .swiper-slide {
+            background: var(--slide-bg);
+            border: 1px solid rgba(0,255,255,0.3);
+            border-radius: 18px;
+            padding: 42px 36px;
+            box-shadow: 0 0 30px rgba(0,255,255,0.25);
+            transition: all 0.6s ease;
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+        .swiper-slide:hover { transform: translateY(-20px) scale(1.03); box-shadow: 0 0 130px rgba(0,255,255,0.6); }
+        .project-title { font-family: 'Orbitron'; font-size: clamp(1.9rem, 2.85vw, 2.65rem); color: var(--green); margin-bottom: 28px; }
+        .value { color: var(--magenta); font-weight: 800; margin-top: 24px; font-size: clamp(1.35rem, 1.75vw, 1.6rem); }
+        .cta {
+            text-align: center;
+            padding: 160px 5vw 120px;
+            background: var(--slide-bg);
+            border-radius: 18px;
+            margin: 0 5vw 90px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 40px rgba(0,255,255,0.3);
+        }
+        .cta button {
+            padding: 26px 90px;
+            font-size: clamp(1.55rem, 2.35vw, 2.2rem);
+            background: transparent;
+            border: 3px solid var(--cyan);
+            color: var(--cyan);
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 0 40px var(--cyan);
+            transition: all 0.5s;
+            text-transform: uppercase;
+            letter-spacing: 7px;
+            font-weight: 700;
+        }
+        .cta button:hover { background: rgba(0,255,255,0.18); transform: scale(1.15); box-shadow: 0 0 190px var(--cyan); }
+        footer { text-align:center; padding: 110px 20px 70px; font-size: clamp(1.15rem, 1.6vw, 1.45rem); opacity: 0.8; }
+    </style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+    <h1>OMEGA UTOPIA</h1>
+    <p style="font-size: clamp(1.75rem, 2.7vw, 2.55rem); letter-spacing: 10px; margin: 28px 0 48px;">
+        DRAGON AND PANDA TECH COLLAB • Minneapolis, Minnesota • March 2026
+    </p>
+    <p>The <strong>Superior AI Operating System</strong> — Local-First, Zero-Trust, Autonomous, Post-Quantum, and Unstoppably Sovereign.</p>
+</header>
+
+<!-- Carousel, Article, CTA, Modal, Footer, Scripts are in the dragonscale folder — the styling above makes the font pop perfectly -->
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+// Safe storage + 8D lotus network + Vue form are already included in the dragonscale folder
+</script>
+</body>
+</html>
